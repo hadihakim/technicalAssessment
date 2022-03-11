@@ -28,6 +28,14 @@ body{
     margin-bottom: 15px;
     padding-top: 15px;
 }
+
+
+
+@keyframes fade {
+  0% { opacity: 0 }
+  50% { opacity: 0.5}
+  100% { opacity: 1}
+}
 .isTurnedOn{
     transition: 250ms;
     background-color: blue;
@@ -51,6 +59,8 @@ body{
     box-shadow: 0 3px 10px rgb(0 0 0 / 20%);
     justify-content: space-around;
     align-items: center;
+    opacity: 1;
+    animation: fade 0.5s linear;
 }
 
 .nameContainer {

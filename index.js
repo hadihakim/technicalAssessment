@@ -53,8 +53,14 @@ const loadData = (url) =>{
   });
 }
 
+
 const showEmptyState = () =>{
   document.getElementById("notempty").style.display = "none";
+  document.getElementById("empty").style.display = "block";
+}
+const hideEmptyState = () =>{
+  document.getElementById("empty").style.display = "none";
+  document.getElementById("notempty").style.display = "block";
 }
 
 init(function(isFinished){
@@ -79,7 +85,10 @@ const onCategoryClicked = (name) =>{
     selectedCategories.push(name);
   }
   // emptyEverything();
-  if(selectedCategories.length) loadData(constructUrl(selectedCategories));
+  if(selectedCategories.length){
+    hideEmptyState();
+    loadData(constructUrl(selectedCategories));
+  } 
   else showEmptyState();
   applyStyling();
 }
