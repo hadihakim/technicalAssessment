@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
     <title>Document</title>
 </head>
 <body>
+    
     <div class="container">
         <div class="horizontal">
             <div id="category1" onclick="onCategoryClicked(this.id)" class="category-item">
@@ -21,19 +22,13 @@
                 Category 3
             </div>
         </div>
-        <div id="cardsContainer" class="cardsContainer">
-            <div class="card">
-                <div class="nameContainer">
-
-                </div>
-                <div class="username">
-
-                </div>
-                <div class="category">
-
-                </div>
+        <div id="empty"></div>
+        <div id="notempty">
+            <div id="cardsContainer" class="cardsContainer">
             </div>
+
         </div>
     </div>
+    
 </body>
 </html>

@@ -15,25 +15,56 @@ body{
     margin-left: 25vw;
     height: 100vh;
 }
+.cardsContainer{
+    height: 100vh;
+    overflow: auto;
+}
 .horizontal{
     width: 100%;
+    height: 6vh;
     overflow: hidden;
     overflow-x: auto;
     white-space: nowrap;
+    margin-bottom: 15px;
+    padding-top: 15px;
+}
+.isTurnedOn{
+    transition: 250ms;
+    background-color: blue;
+    color: white;
 }
 .category-item{
     margin: 15px 15px;
     border: 1px solid black;
     display: inline;
-    padding: 5px;
+    padding: 7px;
     border-radius: 25px;
 }
 .card{
-    margin-top: 1vh;
+    display: flex;
+    flex-direction: row;
     margin-bottom: 1vh;
     margin-left: 1vw;
     width: 28vw;
     height: 25vh;
     border: 1px solid #E5E5E5;
     box-shadow: 0 3px 10px rgb(0 0 0 / 20%);
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nameContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: blue;
+    color: white;
+    border-radius: 50%;
+    padding: 30px;
+}
+
+.categoryContainer {
+    background-color: lightblue;
+    align-self: end;
+    margin-bottom: 10px;
 }

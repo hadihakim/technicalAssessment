@@ -14,10 +14,29 @@ const constructUrl = (filters = []) =>{
   urlParams+= "]";
   return `https://filltext.com/?rows=10&fname={firstName}&lname={lastName}${urlParams}&pretty=true`
 }
+
+const applyStyling = () =>{
+  categories.forEach(category =>{
+    document.getElementById(""+category).className = "category-item";
+
+  })
+  selectedCategories.forEach(category =>{
+    document.getElementById(""+category).className = "isTurnedOn category-item";
+  })
+}
+
+const init = (callback) =>{
+    applyStyling();
+    return callback(true)
+}
+
 const loadData = (url) =>{
+  document.getElementById("empty").style.display = "none";
+  document.getElementById("notempty").style.display = "block"
   fetch(url)
   .then(response => response.json())
   .then(data => {
+    console.log(data.length);
     data.forEach(item =>{
       let cardsContainer = document.getElementById("cardsContainer");
       let card = createElement("div","",["card"]);
@@ -33,7 +52,22 @@ const loadData = (url) =>{
   });
 }
 
-loadData(constructUrl(selectedCategories));
+const showEmptyState = () =>{
+  document.getElementById("notempty").style.display = "none";
+}
+
+init(function(isFinished){
+  if(isFinished){
+    if(selectedCategories.length > 0){
+      loadData(constructUrl(selectedCategories));
+    }
+    else{
+      showEmptyState();
+    }
+  }
+})
+
+
 
 const onCategoryClicked = (name) =>{
   let index = selectedCategories.findIndex(item => item === name);
@@ -43,11 +77,11 @@ const onCategoryClicked = (name) =>{
   else{
     selectedCategories.push(name);
   }
-  console.log(selectedCategories);
+  // emptyEverything();
+  if(selectedCategories.length) loadData(constructUrl(selectedCategories));
+  else showEmptyState();
+  applyStyling();
 }
-
-
-
 
 
 const createElement = (type, innerHTML, classes, id) =>{
@@ -63,12 +97,11 @@ const createElement = (type, innerHTML, classes, id) =>{
 }
 
 
-
 const createInitials = (data) =>{
   let output = data.fname.substring(0,1) + data.lname.substring(0,1);
   return output
 }
 
 const getUserName = (data) =>{
-  return data.fname + data.lname;
+  return data.fname + " " + data.lname;
 }
