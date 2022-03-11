@@ -33,6 +33,7 @@ const init = (callback) =>{
 const loadData = (url) =>{
   document.getElementById("empty").style.display = "none";
   document.getElementById("notempty").style.display = "block"
+  document.getElementById("cardsContainer").innerHTML = "";
   fetch(url)
   .then(response => response.json())
   .then(data => {
